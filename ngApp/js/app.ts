@@ -11,8 +11,13 @@ namespace app {
       templateUrl: '/templates/home.html',
       controller: app.Controllers.HomeController,
       controllerAs: 'vm'
+    }).state('UserProfile', {
+      url: '/userProfile',
+      templateUrl: '/templates/userProfile.html',
+      controller: app.Controllers.userProfileController,
+      controllerAs: 'vm'
     });
-    
+
     $urlRouterProvider.otherwise('/');
     $locationProvider.html5Mode(true);
   });

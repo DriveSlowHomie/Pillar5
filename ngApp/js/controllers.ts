@@ -6,5 +6,12 @@ namespace app.Controllers {
     }
   }
 
+  export class userProfileController {
+
+    constructor() {
+
+    }
+  }
+
   angular.module('app').controller('HomeController', HomeController);
 }
