@@ -24,3 +24,11 @@
     <a href="/register.html"><button>Creat Account</button></a>
 
 </div>
+
+
+<h1>Home Page</h1>
+
+<button ng-click = "vm.pickFile()"> Upload </button>
+
+<h2>{{vm.file.filename}}</h2>
+<img ng-src="vm.file.url" alt=""/>{{vm.file.url}}
