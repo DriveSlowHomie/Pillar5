@@ -22,7 +22,12 @@ namespace app {
     }).state('UserProfile', {
       url: '/userProfile',
       templateUrl: '/templates/userProfile.html',
-      controller: app.Controllers.userProfileController,
+      controller: app.Controllers.UserProfileController,
+      controllerAs: 'vm'
+    }).state('Upload', {
+      url: '/upload',
+      templateUrl: '/templates/upload.html',
+      controller: app.Controllers.UploadController,
       controllerAs: 'vm'
     });
 

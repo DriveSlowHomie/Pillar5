@@ -1,4 +1,9 @@
 namespace app.Controllers {
+
+  export class HomeController {
+    constructor() {}
+  }
+
   export class RegisterController {
     public user;
 
@@ -15,9 +20,12 @@ namespace app.Controllers {
     ) {}
   }
 
-  export class HomeController {
+  export class UploadController {
     public file;
     public productToSave;
+    public pillar;
+    public description;
+    public region;
 
     constructor(
       private filepickerService,
@@ -36,14 +44,14 @@ namespace app.Controllers {
       this.file = file;
       console.log(file)
       console.log(file.url);
-      console.log("productToSave", this.productToSave)
       this.productToSave = {};
       this.productToSave.url = file.url;
-      // this.productToSave.description = ;
-      // this.productToSave.comments = ;
-      // this.productToSave.pillar = ;
-      // this.productToSave.region = ;
+      this.productToSave.description = this.description;
+      this.productToSave.pillar = this.pillar;
+      this.productToSave.region = this.region;
+
       // this.productToSave.user = ;
+      // this.productToSave.comments = ;
       console.log("file URL", file.url)
       console.log("productToSave", this.productToSave)
       this.postService.savePost(this.productToSave)
@@ -51,7 +59,7 @@ namespace app.Controllers {
   }
 
 
-  export class userProfileController {
+  export class UserProfileController {
     constructor() {}
   }
 
