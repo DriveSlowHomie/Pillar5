@@ -3,7 +3,7 @@ namespace app.Services {
     public PostResource;
     constructor(private $resource: ng.resource.IResourceService)
     {
-       this.PostResource = $resource('/api/post/postRoute')
+       this.PostResource = $resource('/api/posts/fileUpload')
     }
 
     public savePost(file) {

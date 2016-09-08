@@ -1,0 +1,13 @@
+"use strict";
+var mongoose = require('mongoose');
+var postSchema = new mongoose.Schema({
+    url: { type: String, unique: true, lowercase: true },
+    description: String,
+    comments: [],
+    pillar: String,
+    region: String,
+    user: String
+});
+var post = mongoose.model("post", postSchema);
+module.exports = post;
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicG9zdE1vZGVsLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsicG9zdE1vZGVsLnRzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiI7QUFDQSxJQUFJLFFBQVEsR0FBRyxPQUFPLENBQUMsVUFBVSxDQUFDLENBQUM7QUFHbkMsSUFBSSxVQUFVLEdBQU8sSUFBSSxRQUFRLENBQUMsTUFBTSxDQUN0QztJQUNFLEdBQUcsRUFBRSxFQUFDLElBQUksRUFBQyxNQUFNLEVBQUUsTUFBTSxFQUFFLElBQUksRUFBRSxTQUFTLEVBQUUsSUFBSSxFQUFDO0lBQ2pELFdBQVcsRUFBRSxNQUFNO0lBQ25CLFFBQVEsRUFBRSxFQUFFO0lBQ1osTUFBTSxFQUFFLE1BQU07SUFDZCxNQUFNLEVBQUUsTUFBTTtJQUNkLElBQUksRUFBRSxNQUFNO0NBQ2IsQ0FDRixDQUFBO0FBRUQsSUFBSSxJQUFJLEdBQUcsUUFBUSxDQUFDLEtBQUssQ0FBQyxNQUFNLEVBQUUsVUFBVSxDQUFDLENBQUM7QUFDOUMsaUJBQVMsSUFBSSxDQUFBIn0=
