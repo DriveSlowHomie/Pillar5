@@ -1,10 +1,13 @@
 'use strict';
 namespace app {
-  angular.module('app', ['ui.router', 'ngResource', 'ui.bootstrap'])
+  angular.module('app', ['ui.router', 'ngResource', 'ui.bootstrap', 'angular-filepicker'])
     .config((
     $stateProvider: ng.ui.IStateProvider,
     $locationProvider: ng.ILocationProvider,
-    $urlRouterProvider: ng.ui.IUrlRouterProvider) => {
+    $urlRouterProvider: ng.ui.IUrlRouterProvider,
+    filepickerProvider) => {
+
+    filepickerProvider.setKey('A1MTKkvVrQiiwPBQaLWoZz');
 
     $stateProvider.state('Home', {
       url: '/',
@@ -19,7 +22,12 @@ namespace app {
     }).state('UserProfile', {
       url: '/userProfile',
       templateUrl: '/templates/userProfile.html',
-      controller: app.Controllers.userProfileController,
+      controller: app.Controllers.UserProfileController,
+      controllerAs: 'vm'
+    }).state('Upload', {
+      url: '/upload',
+      templateUrl: '/templates/upload.html',
+      controller: app.Controllers.UploadController,
       controllerAs: 'vm'
     });
 

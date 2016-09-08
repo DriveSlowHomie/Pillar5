@@ -1,0 +1,34 @@
+<h1>Upload Page</h1>
+
+<label>
+<div>Description: </div>
+<input ng-model="vm.description"/>
+</label>
+
+<div>Pillar: </div>
+  <select ng-model="vm.pillar">
+    <option disabled selected value>* Select Pillar *</option>
+    <option>Graffiti</option>
+    <option>Break Dance</option>
+    <option>Beatbox</option>
+    <option>DJ</option>
+    <option>Rap</option>
+  </select>
+</label>
+
+<div>Region: </div>
+  <select ng-model="vm.region">
+    <option disabled selected value>* Select Region *</option>
+    <option>North America</option>
+    <option>South America</option>
+    <option>Europe</option>
+    <option>Asia</option>
+    <option>Australia</option>
+    <option>Africa</option>
+  </select>
+</label>
+
+<button data-fp-video-length ="30" ng-click = "vm.pickFile()" type="filepicker" onchange="console.log(event.fpfile)"> Upload </button>
+
+<h2>{{vm.file.filename}}</h2>
+<img ng-src="vm.file.url" alt=""/>{{vm.file.url}}
