@@ -1,1 +1,26 @@
-<h1>Home Page</h1>
+<h1>Pillar5</h1>
+
+<div>
+
+  <h5>Login</h5>
+
+      <div>
+
+        <!-- Login form -->
+        <form ng-submit="vm.login()">
+          <div>
+            <label>Email</label>
+            <input ng-model="vm.user.email">
+          </div>
+          <div>
+            <label>Password</label>
+            <input ng-model="vm.user.password">
+          </div>
+          <button>Submit</button>
+        </form>
+
+     </div>
+
+    <a href="/register.html"><button>Creat Account</button></a>
+
+</div>

@@ -11,6 +11,11 @@ namespace app {
       templateUrl: '/templates/home.html',
       controller: app.Controllers.HomeController,
       controllerAs: 'vm'
+    }).state('Register', {
+      url: '/register',
+      templateUrl: '/templates/register.html',
+      controller: app.Controllers.RegisterController,
+      controllerAs: 'vm'
     }).state('UserProfile', {
       url: '/userProfile',
       templateUrl: '/templates/userProfile.html',
