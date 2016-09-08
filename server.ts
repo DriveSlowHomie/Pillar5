@@ -1,5 +1,6 @@
 require('dotenv').config({ silent: true });
 import express = require('express');
+import mongoose = require('mongoose');
 import favicon = require('serve-favicon');
 import logger = require('morgan');
 import cookieParser = require('cookie-parser');
@@ -18,8 +19,20 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+//database connection
+mongoose.connect('mongodb://localhost/pillar5');
+
+let db = mongoose.connection;
+
+db.on('error', console.error.bind('connection error'));
+db.once('open', () => {
+  console.log('wubbalubbadubdub');
+})
+
 app.use(express.static('./ngApp'));
 app.use('/scripts', express.static('bower_components'));
+
+app.use('/api/users', require('./routes/userRoute'));
 
 app.get('/*', function(req, res, next) {
   if (/.js|.html|.css|templates|js|scripts/.test(req.path) || req.xhr) {
