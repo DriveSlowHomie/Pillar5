@@ -15,9 +15,14 @@ namespace app.Services {
 
   export class UserService {
     private RegisterResource;
+    private UserResource;
 
     public register(user){
       return this.RegisterResource.save(user).$promise
+    }
+
+    public getUser(){
+      return this.UserResource.query()
     }
 
     constructor(
