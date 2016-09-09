@@ -19,6 +19,17 @@ router.post('/register', function(req, res, next) {
     });
 });
 
+//Login to pillar5
+router.post('/login', (req, res, next ) => {
+  if(!req.body.email || !req.body.password)
+  res.status(400).send("Please fill out every field");
+  passport.authenticate('local', function(err, users, info){
+        let token = user.generateJWT();
+        console.log(token)
+        return res.json({token : token});
+    }(req, res, next));
+})
+
 //Get User info
 router.get('/userProfile', function(req, res, next) {
   User.find({email: '123'}).then((user)=>{
@@ -26,11 +37,6 @@ router.get('/userProfile', function(req, res, next) {
   })
 });
 
-//Login to pillar5
-router.post('/login', (req, res, next ) => {
-  if(!req.body.email || !req.body.password)
-  res.status(400).send("Please fill out every field");
-})
 
 
 export = router;
