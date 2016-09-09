@@ -4,11 +4,15 @@ let mongoose = require('mongoose');
 let User = require('../models/userModel')
 let passport = require('passport');
 
-let user = new User();
+let user:any = new User();
 
 //Register user into database
 router.post('/register', function(req, res, next) {
+    user.name = req.body.name;
+    user.tag = req.body.tag;
     user.email = req.body.email;
+    user.pillar = req.body.pillar;
+    user.region = req.body.region;
     let setPassword = user.setPassword(req.body.password);
     user.passwordHash = req.body.password;
     user.passwordHash = setPassword.passwordHash;

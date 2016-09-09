@@ -43,6 +43,10 @@ namespace app.Services {
       this.status.role = u.role;
     };
 
+    public getUser(){
+      return this.UserResource.query()
+    }
+
     public getToken () {
       return this.$window.localStorage.getItem('token')
     }
@@ -51,9 +55,6 @@ namespace app.Services {
       this.$window.localStorage.setItem('token', token)
     }
 
-    public getUser(){
-      return this.UserResource.query()
-    }
 
     private urlBase64Decode(str) {
       let output = str.replace(/-/g, '+').replace(/_/g, '/');

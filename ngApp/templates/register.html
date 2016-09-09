@@ -1,6 +1,6 @@
 <div>
 
-  <h5>Register</h5>
+  <h1>Register</h1>
 
       <div>
 
@@ -23,6 +23,30 @@
                 <label>Password</label>
                 <input ng-model="vm.user.password">
               </div>
+              <div>
+              <label>Pillar: </label>
+                <select ng-model="vm.user.pillar">
+                  <option disabled selected value>* Select Pillar *</option>
+                  <option>Graffiti</option>
+                  <option>Break Dance</option>
+                  <option>Beatbox</option>
+                  <option>DJ</option>
+                  <option>Rap</option>
+                </select>
+              </div>
+              <div>
+                <label>Region: </label>
+                  <select ng-model="vm.user.region">
+                    <option disabled selected value>* Select Region *</option>
+                    <option>North America</option>
+                    <option>South America</option>
+                    <option>Europe</option>
+                    <option>Asia</option>
+                    <option>Australia</option>
+                    <option>Africa</option>
+                  </select>
+                </div>
+
             <button>Submit</button>
           </div>
         </form>

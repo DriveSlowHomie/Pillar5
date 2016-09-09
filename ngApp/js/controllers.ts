@@ -76,7 +76,7 @@ namespace app.Controllers {
     public userProfile
 
     public profile() {
-        this.userProfile= this.userService.getUser()
+        this.userProfile = this.userService.getUser()
     }
 
     constructor(
