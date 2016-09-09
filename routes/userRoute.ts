@@ -9,10 +9,10 @@ let user = new User();
 //Register user into database
 router.post('/register', function(req, res, next) {
     user.email = req.body.email;
-    //let setPassword = user.setPassword(req.body.password);
+    let setPassword = user.setPassword(req.body.password);
     user.passwordHash = req.body.password;
-    // user.passwordHash = setPassword.passwordHash;
-    // user.salt = setPassword.salt;
+    user.passwordHash = setPassword.passwordHash;
+    user.salt = setPassword.salt;
     user.save(function(err, user) {
         if(err) return next(err);
         res.send("Registration Complete. Please login.");
@@ -25,6 +25,12 @@ router.get('/userProfile', function(req, res, next) {
     res.json(user);
   })
 });
+
+//Login to pillar5
+router.post('/login', (req, res, next ) => {
+  if(!req.body.email || !req.body.password)
+  res.status(400).send("Please fill out every field");
+})
 
 
 export = router;

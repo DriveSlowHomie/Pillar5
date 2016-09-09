@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-//database connection
+//Database connection
 mongoose.connect('mongodb://localhost/pillar5');
 
 let db = mongoose.connection;
