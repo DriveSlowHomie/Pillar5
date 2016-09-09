@@ -10,7 +10,7 @@ namespace app.Controllers {
     public register(){
           this.userService.register(this.user).then((res) => {
             console.log(res);
-            this.$state.go('Home')
+            this.$state.go('UserProfile')
           })
         }
 
@@ -60,7 +60,16 @@ namespace app.Controllers {
 
 
   export class UserProfileController {
-    constructor() {}
+    public userProfile
+
+    public profile() {
+        this.userProfile= this.userService.getUser()
+    }
+
+    constructor(
+      private userService: app.Services.UserService,
+      private $state: ng.ui.IStateService
+    ) {}
   }
 
   angular.module('app').controller('HomeController', HomeController);
