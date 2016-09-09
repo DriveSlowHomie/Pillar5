@@ -1,7 +1,20 @@
 namespace app.Controllers {
 
   export class HomeController {
-    constructor() {}
+    public user;
+
+    public login(user){
+            this.userService.login(this.user).then((res) => {
+            console.log(res);
+            console.log(`this is ${this.user}`);
+            this.$state.go('UserProfile')
+          })
+        }
+
+    constructor(
+      private userService: app.Services.UserService,
+      private $state: ng.ui.IStateService
+    ) {}
   }
 
   export class RegisterController {

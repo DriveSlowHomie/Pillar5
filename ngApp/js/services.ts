@@ -15,10 +15,18 @@ namespace app.Services {
 
   export class UserService {
     private RegisterResource;
+    private LoginResource;
     private UserResource;
 
     public register(user){
       return this.RegisterResource.save(user).$promise
+    }
+
+    public login(user){
+      return this.LoginResource.save(user).$promise.then((res) =>
+      {
+        console.log(`This is controller: ${user}`)
+      });
     }
 
     public getUser(){
@@ -28,6 +36,7 @@ namespace app.Services {
     constructor(
       private $resource: ng.resource.IResourceService) {
       this.RegisterResource = $resource('/api/users/register')
+      this.LoginResource = $resource('/api/users/login')
     }
 
   }
