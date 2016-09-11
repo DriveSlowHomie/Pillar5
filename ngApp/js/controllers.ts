@@ -82,7 +82,33 @@ namespace app.Controllers {
     constructor(
       private userService: app.Services.UserService,
       private $state: ng.ui.IStateService
-    ) {}
+    ) {
+      this.userProfile = this.userService.getUser()
+      console.log(this.userProfile)}
+  }
+
+  export class EditProfileController {
+    public userProfile
+    public editedProfile
+    public image;
+    public description;
+    public tag;
+
+    public editProfile() {
+      this.editedProfile = {};
+      this.editedProfile.image = this.image;
+      this.editedProfile.description = this.description;
+      this.editedProfile.tag = this.tag;
+      console.log("from controller ", this.editedProfile);
+      this.userService.editUser(this.editedProfile)
+    }
+
+    constructor(
+      private userService: app.Services.UserService,
+      private $state: ng.ui.IStateService
+    ) {
+      this.userProfile = this.userService.getUser()
+      console.log(this.userProfile)}
   }
 
   angular.module('app').controller('HomeController', HomeController);

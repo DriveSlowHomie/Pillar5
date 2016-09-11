@@ -29,6 +29,11 @@ namespace app {
       templateUrl: '/templates/upload.html',
       controller: app.Controllers.UploadController,
       controllerAs: 'vm'
+    }).state('EditProfile', {
+      url: '/editProfile',
+      templateUrl: '/templates/editProfile.html',
+      controller: app.Controllers.EditProfileController,
+      controllerAs: 'vm'
     });
 
     $urlRouterProvider.otherwise('/');

@@ -11,6 +11,7 @@ let UserSchema:any = new mongoose.Schema(
     salt:String,
     name:String,
     tag:String,
+    image:String,
     description:String,
     rank:String,
     profilePic:String,
