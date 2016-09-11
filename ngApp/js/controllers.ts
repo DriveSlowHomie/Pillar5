@@ -101,6 +101,7 @@ namespace app.Controllers {
       this.editedProfile.tag = this.tag;
       console.log("from controller ", this.editedProfile);
       this.userService.editUser(this.editedProfile)
+      this.$state.go('UserProfile');
     }
 
     constructor(
