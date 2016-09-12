@@ -41,6 +41,31 @@ router.get('/userProfile', function(req, res, next) {
   })
 });
 
+router.post('/editProfile', function(req, res, next) {
+  User.findOne({email: "123"}, (err, user) => {
+    if(err) {
+      res.send(err);
+    }
+    if(user) {
+      console.log("++++++++++++++++++++++++++++++++++++", req.body)
+      user.image = req.body.image;
+      user.description = req.body.description;
+      user.tag = req.body.tag;
+      user.save((err, user) => {
+        if(err) {
+          res.send("this is the errorrrrr", err)
+        } else {
+          res.send("This post has been edited");
+        }
+      })
+    }
+  })
+});
 
+//Login to pillar5
+router.post('/login', (req, res, next ) => {
+  if(!req.body.email || !req.body.password)
+  res.status(400).send("Please fill out every field");
+})
 
 export = router;

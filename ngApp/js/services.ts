@@ -17,6 +17,7 @@ namespace app.Services {
     private RegisterResource;
     private LoginResource;
     private UserResource;
+    private EditResource;
 
     public status = {
       _id: null,
@@ -69,12 +70,19 @@ namespace app.Services {
      return decodeURIComponent(encodeURIComponent(this.$window.atob(output)));
     }
 
+    public editUser(newInfo){
+      console.log(newInfo)
+      return this.EditResource.save(newInfo).$promise
+    }
 
     constructor(
       private $window: ng.IWindowService,
       private $resource: ng.resource.IResourceService) {
       this.RegisterResource = $resource('/api/users/register')
       this.LoginResource = $resource('/api/users/login')
+      this.UserResource = $resource('/api/users/userProfile')
+      this.EditResource = $resource('/api/users/editProfile')
+
     }
 
   }

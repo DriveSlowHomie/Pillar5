@@ -23,7 +23,7 @@ router.post('/fileUpload', function(req, res, next) {
       }
       if(user) {
         let postArray = user.posts;
-        postArray.push(post.url);
+        postArray.push(post);
         user.posts = postArray;
         user.save((err, user) => {
           if(err) {
