@@ -6,7 +6,6 @@ namespace app.Controllers {
     public login(user){
             this.userService.login(this.user).then((res) => {
             console.log(res);
-            console.log(`this is ${this.user}`);
             this.$state.go('UserProfile')
           })
         }

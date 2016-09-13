@@ -14,7 +14,6 @@ router.post('/register', function(req, res, next) {
     user.pillar = req.body.pillar;
     user.region = req.body.region;
     let setPassword = user.setPassword(req.body.password);
-    user.passwordHash = req.body.password;
     user.passwordHash = setPassword.passwordHash;
     user.salt = setPassword.salt;
     user.save(function(err, user) {
@@ -23,10 +22,9 @@ router.post('/register', function(req, res, next) {
     });
 });
 
-//Login to pillar5
+//Login to Pillar5
 router.post('/login', (req, res, next ) => {
-  if(!req.body.email || !req.body.password)
-  res.status(400).send("Please fill out every field");
+  if(!req.body.email || !req.body.password) return res.status(400).send("Please fill out every field");
   passport.authenticate('local', function(err, users, info){
         let token = user.generateJWT();
         console.log(token)

@@ -5,6 +5,7 @@ namespace app {
     $stateProvider: ng.ui.IStateProvider,
     $locationProvider: ng.ILocationProvider,
     $urlRouterProvider: ng.ui.IUrlRouterProvider,
+    $httpProvider: ng.IHttpProvider,
     filepickerProvider) => {
 
     filepickerProvider.setKey('A1MTKkvVrQiiwPBQaLWoZz');
@@ -33,10 +34,15 @@ namespace app {
       url: '/editProfile',
       templateUrl: '/templates/editProfile.html',
       controller: app.Controllers.EditProfileController,
+    }).state('UserFeed', {
+      url: '/userFeed',
+      templateUrl: '/templates/userFeed.html',
+      controller: app.Controllers.UploadController,
       controllerAs: 'vm'
     });
 
     $urlRouterProvider.otherwise('/');
     $locationProvider.html5Mode(true);
+    $httpProvider.interceptors.push('AuthInterceptor');
   });
 }

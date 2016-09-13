@@ -33,7 +33,7 @@ namespace app.Services {
       return this.LoginResource.save(user).$promise.then((res) =>
       {this.setToken(res['token']);
        this.setUser()
-        console.log(`This is controller: ${user}`)
+        console.log(`This is service: ${user}`)
       });
     }
 
@@ -55,7 +55,6 @@ namespace app.Services {
     public setToken(token:string) {
       this.$window.localStorage.setItem('token', token)
     }
-
 
     private urlBase64Decode(str) {
       let output = str.replace(/-/g, '+').replace(/_/g, '/');
