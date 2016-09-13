@@ -17,6 +17,7 @@ namespace app.Services {
     private RegisterResource;
     private LoginResource;
     private UserResource;
+    private UserFeedResource;
     private EditResource;
 
     public status = {
@@ -46,6 +47,11 @@ namespace app.Services {
 
     public getUser(){
       return this.UserResource.query()
+    }
+
+    public getUserFeed(){
+      return this.UserFeedResource.query(),
+      console.log("Hey look at me");
     }
 
     public getToken () {
@@ -80,8 +86,8 @@ namespace app.Services {
       this.RegisterResource = $resource('/api/users/register')
       this.LoginResource = $resource('/api/users/login')
       this.UserResource = $resource('/api/users/userProfile')
+      this.UserFeedResource = $resource('/api/users/userFeed')
       this.EditResource = $resource('/api/users/editProfile')
-
     }
 
   }

@@ -37,7 +37,7 @@ namespace app {
     }).state('UserFeed', {
       url: '/userFeed',
       templateUrl: '/templates/userFeed.html',
-      controller: app.Controllers.UploadController,
+      controller: app.Controllers.UserFeedController,
       controllerAs: 'vm'
     });
 

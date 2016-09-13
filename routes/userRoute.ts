@@ -60,10 +60,18 @@ router.post('/editProfile', function(req, res, next) {
   })
 });
 
+router.get('/userFeed', function(req, res, next) {
+  User.find({email: "123"}).then((user)=>{
+    console.log(`Im following no one`)
+    res.send(user.following);
+  })
+});
+
+
 //Login to pillar5
-router.post('/login', (req, res, next ) => {
-  if(!req.body.email || !req.body.password)
-  res.status(400).send("Please fill out every field");
-})
+// router.post('/login', (req, res, next ) => {
+//   if(!req.body.email || !req.body.password)
+//   res.status(400).send("Please fill out every field");
+// })
 
 export = router;
