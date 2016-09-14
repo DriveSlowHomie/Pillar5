@@ -1,8 +1,8 @@
 userprofile
 <div class="container">
-  <div>this is the user {{vm.userProfile.tag}}</div>
+  <div>this is the user {{vm.userProfile[0].tag}}</div>
 
-  <ul ng-repeat="post in vm.userProfile.posts">
+  <ul ng-repeat="post in vm.userProfile[0].posts">
     <li>
       <div>{{post.pillar}}</div>
       <img src="{{post.url}}">
