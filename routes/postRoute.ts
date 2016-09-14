@@ -4,6 +4,18 @@ let mongoose = require('mongoose');
 let Post = require('../models/postModel')
 let User = require('../models/userModel')
 
+let post1 = new Post(
+  {
+    url: "https://cdn.filepicker.io/api/file/0kYW06LdQg6DmELnK74e",
+    description: "Screenshot of upload",
+    comments: ["Awesome upload", "YaYYYYYY"],
+    pillar: "Break Dance",
+    region: "Asia",
+    user: "Kanye West"
+  }
+)
+
+post1.save()
 
 let post = new Post();
 
