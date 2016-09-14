@@ -6,6 +6,23 @@ let passport = require('passport');
 
 let user:any = new User();
 
+let user1 = new User(
+  {
+    email: 'user',
+    name:'Kanye West',
+    tag:'Yeezy',
+    description:'Just jumped over Jumpman',
+    rank:'God',
+    pillar:'Rap',
+    religion:'USA',
+    following:[],
+    followers:[],
+    posts:[]
+  }
+)
+
+user1.save()
+
 //Register user into database
 router.post('/register', function(req, res, next) {
     user.name = req.body.name;
