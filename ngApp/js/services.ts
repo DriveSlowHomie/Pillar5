@@ -17,6 +17,7 @@ namespace app.Services {
     private RegisterResource;
     private LoginResource;
     private UserResource;
+    private UserFeedResource;
     private EditResource;
 
     public status = {
@@ -33,7 +34,7 @@ namespace app.Services {
       return this.LoginResource.save(user).$promise.then((res) =>
       {this.setToken(res['token']);
        this.setUser()
-        console.log(`This is controller: ${user}`)
+        console.log(`This is service: ${user}`)
       });
     }
 
@@ -48,6 +49,11 @@ namespace app.Services {
       return this.UserResource.query()
     }
 
+    public getUserFeed(){
+      return this.UserFeedResource.query(),
+      console.log("Hey look at me");
+    }
+
     public getToken () {
       return this.$window.localStorage.getItem('token')
     }
@@ -55,7 +61,6 @@ namespace app.Services {
     public setToken(token:string) {
       this.$window.localStorage.setItem('token', token)
     }
-
 
     private urlBase64Decode(str) {
       let output = str.replace(/-/g, '+').replace(/_/g, '/');
@@ -81,8 +86,8 @@ namespace app.Services {
       this.RegisterResource = $resource('/api/users/register')
       this.LoginResource = $resource('/api/users/login')
       this.UserResource = $resource('/api/users/userProfile')
+      this.UserFeedResource = $resource('/api/users/userFeed')
       this.EditResource = $resource('/api/users/editProfile')
-
     }
 
   }

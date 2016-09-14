@@ -6,7 +6,6 @@ namespace app.Controllers {
     public login(user){
             this.userService.login(this.user).then((res) => {
             console.log(res);
-            console.log(`this is ${this.user}`);
             this.$state.go('UserProfile')
           })
         }
@@ -110,6 +109,17 @@ namespace app.Controllers {
     ) {
       this.userProfile = this.userService.getUser()
       console.log(this.userProfile)}
+  }
+
+  export class UserFeedController {
+    public userFeeds;
+
+    constructor(
+      private userService: app.Services.UserService,
+      private $state: ng.ui.IStateService
+    ) {
+      this.userFeeds = this.userService.getUserFeed()
+      console.log("netgear sucks")}
   }
 
   angular.module('app').controller('HomeController', HomeController);

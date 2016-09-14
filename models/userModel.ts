@@ -23,21 +23,22 @@ let UserSchema:any = new mongoose.Schema(
   }
 )
 
-//Salting
+//Salting & Hashing
 UserSchema.method("setPassword", (password) => {
   let temp = {passwordHash:null, salt:null};
   temp.salt = crypto.randomBytes(16).toString('hex')
   temp.passwordHash = crypto.pbkdf2Sync(password, temp.salt, 1000, 64).toString('hex');
-  console.log(`this is the hashed password ${temp.passwordHash}`)
+  console.log(`This is the hashed password ${temp.passwordHash}`)
   return temp;
 });
 
-//Hashing
+//validatePassword
 UserSchema.method('validatePassword', function(password) {
     let hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
      return (hash === this.passwordHash);
 });
 
+//GenerateJWT
 UserSchema.method('generateJWT', function() {
    let today = new Date();
    let exp = new Date(today);
