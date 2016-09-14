@@ -34,6 +34,8 @@ app.use('/scripts', express.static('bower_components'));
 
 app.use('/api/users', require('./routes/userRoute'));
 app.use('/api/posts', require('./routes/postRoute'));
+app.use('/api/discover', require('./routes/discoverRoute'));
+
 
 app.get('/*', function(req, res, next) {
   if (/.js|.html|.css|templates|js|scripts/.test(req.path) || req.xhr) {

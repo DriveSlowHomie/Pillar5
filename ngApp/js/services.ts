@@ -13,6 +13,20 @@ namespace app.Services {
 
   }
 
+  export class DiscoverService {
+    public DiscoverResource;
+    constructor(private $resource: ng.resource.IResourceService)
+    {
+       this.DiscoverResource = $resource('/api/discover/byPillar')
+    }
+
+    public discoverBy(pillarFind) {
+      console.log("FROM SERVICES ", pillarFind)
+      return this.DiscoverResource.query({pillar: pillarFind}).$promise;
+    }
+
+  }
+
   export class UserService {
     private RegisterResource;
     private LoginResource;
@@ -91,6 +105,7 @@ namespace app.Services {
     }
 
   }
+  angular.module('app').service('discoverService', DiscoverService);
   angular.module('app').service('userService', UserService);
   angular.module('app').service('postService', PostService);
 }

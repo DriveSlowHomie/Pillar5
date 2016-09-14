@@ -100,7 +100,7 @@ namespace app.Controllers {
       this.editedProfile.tag = this.tag;
       console.log("from controller ", this.editedProfile);
       this.userService.editUser(this.editedProfile)
-      this.$state.go('UserProfile');
+      this.$state.go('UserProfile')
     }
 
     constructor(
@@ -120,6 +120,23 @@ namespace app.Controllers {
     ) {
       this.userFeeds = this.userService.getUserFeed()
       console.log("netgear sucks")}
+  }
+  export class DiscoverController {
+    public pillar;
+    public posts;
+
+    public discover(pillar){
+            this.discoverService.discoverBy(this.pillar).then((res) => {
+            console.log(`this is ${this.pillar}`);
+            console.log(res);
+            this.posts = res;
+          })
+        }
+
+    constructor(
+      private discoverService: app.Services.DiscoverService,
+      private $state: ng.ui.IStateService
+    ) {}
   }
 
   angular.module('app').controller('HomeController', HomeController);

@@ -39,6 +39,11 @@ namespace app {
       templateUrl: '/templates/userFeed.html',
       controller: app.Controllers.UserFeedController,
       controllerAs: 'vm'
+    }).state('Discover', {
+      url: '/discover',
+      templateUrl: '/templates/discover.html',
+      controller: app.Controllers.DiscoverController,
+      controllerAs: 'vm'
     });
 
     $urlRouterProvider.otherwise('/');
