@@ -4,7 +4,7 @@ let mongoose = require('mongoose');
 
 let postSchema:any = new mongoose.Schema(
   {
-    url: {type:String, unique: true, lowercase: true},
+    url: {type:String, unique: true},
     description: String,
     comments: [],
     pillar: String,

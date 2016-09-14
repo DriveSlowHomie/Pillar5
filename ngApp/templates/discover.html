@@ -13,5 +13,12 @@
 
   <button ng-click = "vm.discover()"> Discover </button>
 
-<u.></ul>
 {{vm.posts}}
+
+<ul ng-repeat="post in vm.posts">
+  <li>
+    <div>{{post.pillar}}</div>
+    <img src="{{post.url}}">
+    <div>{{post.description}}</div>
+  </li>
+</ul>
