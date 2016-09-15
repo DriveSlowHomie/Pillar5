@@ -17,7 +17,16 @@ let user1 = new User(
     religion:'USA',
     following:[],
     followers:[],
-    posts:[]
+    posts:[
+      {
+        url: "https://cdn.filepicker.io/api/file/0kYW06LdQg6DmELnK74e",
+        description: "Screenshot of upload",
+        comments: ["Awesome upload", "YaYYYYYY"],
+        pillar: "Break Dance",
+        region: "Asia",
+        user: "Kanye West"
+      }
+    ]
   }
 )
 

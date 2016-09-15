@@ -1,13 +1,14 @@
 userprofile
 <div class="container">
-  <!-- <div class="row">
-    <div class="col-sm-6">Image: </div>
-    <input class="col-sm-6 pull-right"/>
-    <div class="col-sm-6">Description: </div>
-    <input class="col-sm-6 pull-right"/>
-  </div> -->
+  <div>this is the user {{vm.userProfile[0].tag}}</div>
 
-  <div>this is the user {{vm.userProfile}}</div>
+  <ul ng-repeat="post in vm.userProfile[0].posts">
+    <li>
+      <div>{{post.pillar}}</div>
+      <img src="{{post.url}}">
+      <div>{{post.description}}</div>
+    </li>
+  </ul>
 </div>
 
 <a href="/editProfile"><button>Edit Profile</button></a>
