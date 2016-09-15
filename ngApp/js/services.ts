@@ -33,6 +33,7 @@ namespace app.Services {
     private UserResource;
     private UserFeedResource;
     private EditResource;
+    private ProfileResource;
 
     public status = {
       _id: null,
@@ -61,6 +62,10 @@ namespace app.Services {
 
     public getUser(){
       return this.UserResource.query()
+    }
+
+    public getProfile(profile){
+      return this.ProfileResource.query({user: 'Kanye West'})
     }
 
     public getUserFeed(){
@@ -100,6 +105,7 @@ namespace app.Services {
       this.RegisterResource = $resource('/api/users/register')
       this.LoginResource = $resource('/api/users/login')
       this.UserResource = $resource('/api/users/userProfile')
+      this.ProfileResource = $resource('/api/users/profile')
       this.UserFeedResource = $resource('/api/users/userFeed')
       this.EditResource = $resource('/api/users/editProfile')
     }

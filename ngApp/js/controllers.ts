@@ -74,9 +74,9 @@ namespace app.Controllers {
   export class UserProfileController {
     public userProfile
 
-    public profile() {
-        this.userProfile = this.userService.getUser()
-    }
+    // public profile() {
+    //     this.userProfile = this.userService.getUser()
+    // }
 
     constructor(
       private userService: app.Services.UserService,
@@ -84,6 +84,26 @@ namespace app.Controllers {
     ) {
       this.userProfile = this.userService.getUser()
       console.log(this.userProfile)}
+  }
+
+  export class ProfileController {
+    public profile;
+    public user;
+
+    // public profile() {
+    //     this.userProfile = this.userService.getUser()
+    // }
+
+    constructor(
+      private $stateParams: ng.ui.IStateParamsService,
+      private userService: app.Services.UserService,
+      private $state: ng.ui.IStateService
+    ) {
+      console.log( `${this.$stateParams}`)
+      this.user = this.$stateParams['profile'];
+      this.profile = this.userService.getProfile(this.user)
+      console.log(`Stateparams ${this.profile}`)
+    }
   }
 
   export class EditProfileController {
@@ -121,6 +141,8 @@ namespace app.Controllers {
       this.userFeeds = this.userService.getUserFeed()
       console.log("netgear sucks")}
   }
+
+
   export class DiscoverController {
     public pillar;
     public posts;

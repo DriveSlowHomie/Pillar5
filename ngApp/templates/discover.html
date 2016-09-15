@@ -15,6 +15,7 @@
 
 <ul ng-repeat="post in vm.posts">
   <li>
+    <a href="/profile/{{post.user}}"><div>{{post.user}}</div></a>
     <div>{{post.pillar}}</div>
     <img src="{{post.url}}">
     <div>{{post.description}}</div>
