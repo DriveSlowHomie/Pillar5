@@ -74,6 +74,17 @@ router.get('/profile', function(req, res, next) {
   })
 });
 
+//Follow
+router.put('/follow', (req, res, next) => {
+  User.find({email: "123"}).then(req.body.user, {$set: {followers: req.body.email}}, (err, res) => {
+    if(err) {
+      console.log(err);
+    } else {
+      console.log(res);
+    }
+  })
+});
+
 router.post('/editProfile', function(req, res, next) {
   User.findOne({email: "123"}, (err, user) => {
     if(err) {

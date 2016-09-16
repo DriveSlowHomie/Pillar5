@@ -34,8 +34,9 @@ UserSchema.method("setPassword", (password) => {
 
 //validatePassword
 UserSchema.method('validatePassword', function(password) {
+    console.log(`I have been validated`)
     let hash = crypto.pbkdf2Sync(password, this.salt, 1000, 64).toString('hex');
-     return (hash === this.passwordHash);
+    return (hash === this.passwordHash);
 });
 
 //GenerateJWT
