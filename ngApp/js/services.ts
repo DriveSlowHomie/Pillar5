@@ -34,12 +34,21 @@ namespace app.Services {
     private UserFeedResource;
     private EditResource;
     private ProfileResource;
+<<<<<<< 5130dfb272d996a25d03f9164b2f7f6279a8df16
     private FollowResource;
+=======
+    private LikeResource;
+>>>>>>> Implements client side logic for likes
 
     public status = {
       _id: null,
       email: null,
       role: null
+    }
+
+    public addLike(user){
+      console.log("USER from addlike", user)
+      return this.LikeResource.save(user).$promise
     }
 
     public register(user){
@@ -125,6 +134,8 @@ namespace app.Services {
       this.FollowResource = $resource('/api/users/follow')
       this.UserFeedResource = $resource('/api/users/userFeed')
       this.EditResource = $resource('/api/users/editProfile')
+      this.LikeResource = $resource('/api/users/likeProfile')
+
     }
 
   }

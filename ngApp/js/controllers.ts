@@ -162,6 +162,7 @@ namespace app.Controllers {
   export class DiscoverController {
     public pillar;
     public posts;
+    public user;
 
     public discover(pillar){
             this.discoverService.discoverBy(this.pillar).then((res) => {
@@ -170,8 +171,17 @@ namespace app.Controllers {
             this.posts = res;
           })
         }
+    public like () {
+      this.user = "123"
+      console.log("user from LIKE function: ", this.user)
+
+      this.userService.addLike(this.user).then((res) => {
+        console.log("res from LIKE function: ", res)
+      })
+    }
 
     constructor(
+      private userService: app.Services.UserService,
       private discoverService: app.Services.DiscoverService,
       private $state: ng.ui.IStateService
     ) {}

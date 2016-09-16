@@ -15,7 +15,19 @@ let post1 = new Post(
   }
 )
 
+let post2 = new Post(
+  {
+    url: "http://www.top13.net/wp-content/uploads/2015/10/perfectly-timed-funny-cat-pictures-5.jpg",
+    description: "Cats",
+    comments: ["Cats are cool", "Silly kitty"],
+    pillar: "Break Dance",
+    region: "Asia",
+    user: "123"
+  }
+)
+
 post1.save()
+post2.save()
 
 let post = new Post();
 

@@ -17,7 +17,9 @@
   <li>
     <a href="/profile/{{post.user}}"><div>{{post.user}}</div></a>
     <div>{{post.pillar}}</div>
+    <div>{{post.user}}</div>
     <img src="{{post.url}}">
     <div>{{post.description}}</div>
+    <button ng-click = "vm.like()"> Like! </button>
   </li>
 </ul>

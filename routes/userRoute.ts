@@ -17,20 +17,39 @@ let user1 = new User(
     religion:'USA',
     following:[],
     followers:[],
-    posts:[
-      {
+    posts:[{
         url: "https://cdn.filepicker.io/api/file/0kYW06LdQg6DmELnK74e",
         description: "Screenshot of upload",
         comments: ["Awesome upload", "YaYYYYYY"],
         pillar: "Break Dance",
         region: "Asia",
         user: "Kanye West"
-      }
-    ]
+      }]
   }
 )
-
+let user2 = new User(
+  {
+    email: '123',
+    name:'123',
+    tag:'1234',
+    description:'123123123123123',
+    rank:'123',
+    pillar:'123',
+    religion:'123',
+    following:[],
+    followers:[],
+    posts:[{
+        url: "http://www.top13.net/wp-content/uploads/2015/10/perfectly-timed-funny-cat-pictures-5.jpg",
+        description: "Cats",
+        comments: ["Cats are cool", "Silly kitty"],
+        pillar: "Break Dance",
+        region: "Asia",
+        user: "123"
+      }]
+  }
+)
 user1.save()
+user2.save()
 
 //Register user into database
 router.post('/register', function(req, res, next) {

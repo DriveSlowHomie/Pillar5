@@ -9,7 +9,8 @@ let postSchema:any = new mongoose.Schema(
     comments: [],
     pillar: String,
     region: String,
-    user: String
+    user: String,
+    like: {}
   }
 )
 
