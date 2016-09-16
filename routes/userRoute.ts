@@ -65,6 +65,15 @@ router.get('/userProfile', function(req, res, next) {
   })
 });
 
+//Get Profile info
+router.get('/profile', function(req, res, next) {
+  let user = req.query.user
+  console.log(req.query)
+  User.find({name: user}).then((user)=>{
+    res.json(user);
+  })
+});
+
 router.post('/editProfile', function(req, res, next) {
   User.findOne({email: "123"}, (err, user) => {
     if(err) {

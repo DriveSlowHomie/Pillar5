@@ -44,6 +44,11 @@ namespace app {
       templateUrl: '/templates/discover.html',
       controller: app.Controllers.DiscoverController,
       controllerAs: 'vm'
+    }).state('Profile', {
+      url: '/profile/:user',
+      templateUrl: '/templates/profile.html',
+      controller: app.Controllers.ProfileController,
+      controllerAs: 'vm'
     });
 
     $urlRouterProvider.otherwise('/');

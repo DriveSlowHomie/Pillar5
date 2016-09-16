@@ -1,0 +1,14 @@
+profile
+<div class="container">
+  <div>this is the profile {{vm.profile[0].tag}}</div>
+
+  <ul ng-repeat="post in vm.profile[0].posts">
+    <li>
+      <div>{{post.pillar}}</div>
+      <img src="{{post.url}}">
+      <div>{{post.description}}</div>
+    </li>
+  </ul>
+</div>
+
+<button>Follow</button>
