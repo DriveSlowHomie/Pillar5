@@ -13,7 +13,8 @@ namespace app.Controllers {
     constructor(
       private userService: app.Services.UserService,
       private $state: ng.ui.IStateService
-    ) {}
+    ) {
+    }
   }
 
   export class RegisterController {
@@ -74,24 +75,39 @@ namespace app.Controllers {
   export class UserProfileController {
     public userProfile
 
+    public logout(){
+      console.log('I am logging out')
+      this.userService.deleteToken()
+    }
+
+
     // public profile() {
     //     this.userProfile = this.userService.getUser()
     // }
 
     constructor(
+      private $window: ng.IWindowService,
       private userService: app.Services.UserService,
       private $state: ng.ui.IStateService
     ) {
       this.userProfile = this.userService.getUser()
-      console.log(this.userProfile)}
+      console.log(this.userProfile)
+      let token = this.userService.getToken()
+      let userInfo = this.userService.parseJwt(token)
+      // var payload = window.atob(window.localStorage['token'].split('.')[1])
+
+      console.log(`${userInfo}`)
+    }
   }
 
   export class ProfileController {
     public profile;
     public user;
 
-    // public profile() {
-    //     this.userProfile = this.userService.getUser()
+    //
+    // public follow(){
+    //   this.userService.follow()
+    //
     // }
 
     constructor(
@@ -99,7 +115,7 @@ namespace app.Controllers {
       private userService: app.Services.UserService,
       private $state: ng.ui.IStateService
     ) {
-      console.log( `${this.$stateParams}`)
+      console.log(`${this.$stateParams}`)
       this.user = this.$stateParams['profile'];
       this.profile = this.userService.getProfile(this.user)
       console.log(`Stateparams ${this.profile}`)

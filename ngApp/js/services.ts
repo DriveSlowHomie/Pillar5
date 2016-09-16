@@ -34,6 +34,7 @@ namespace app.Services {
     private UserFeedResource;
     private EditResource;
     private ProfileResource;
+    private FollowResource;
 
     public status = {
       _id: null,
@@ -48,17 +49,17 @@ namespace app.Services {
     public login(user){
       return this.LoginResource.save(user).$promise.then((res) =>
       {this.setToken(res['token']);
-       this.setUser()
+      //  this.setUser()
         console.log(`This is service: ${user}`)
       });
     }
 
-    public setUser(){
-      let u = JSON.parse(this.urlBase64Decode(this.getToken().split('.')[1]));
-      this.status._id = u._id;
-      this.status.email = u.email;
-      this.status.role = u.role;
-    };
+    // public setUser(){
+    //   let u = JSON.parse(this.urlBase64Decode(this.getToken().split('.')[1]));
+    //   this.status._id = u._id;
+    //   this.status.email = u.email;
+    //   this.status.role = u.role;
+    // };
 
     public getUser(){
       return this.UserResource.query()
@@ -66,6 +67,10 @@ namespace app.Services {
 
     public getProfile(profile){
       return this.ProfileResource.query({user: 'Kanye West'})
+    }
+
+    public follow(user){
+      return this.FollowResource.save().$promise
     }
 
     public getUserFeed(){
@@ -77,23 +82,34 @@ namespace app.Services {
       return this.$window.localStorage.getItem('token')
     }
 
+    public deleteToken(){
+      console.log('I am deleting the token')
+      this.$window.localStorage.setItem('token', '');
+    }
+
     public setToken(token:string) {
       this.$window.localStorage.setItem('token', token)
     }
 
-    private urlBase64Decode(str) {
-      let output = str.replace(/-/g, '+').replace(/_/g, '/');
-     switch (output.length % 4) {
-       case 0: { break; }
-       case 2: { output += '=='; break; }
-       case 3: { output += '='; break; }
-       default: {
-         throw 'Illegal base64url string!';
-       }
-     }
-     return decodeURIComponent(encodeURIComponent(this.$window.atob(output)));
-    }
+//     public urlBase64Decode(str) {
+//       console.log(`${str}`)
+//       let output = str.replace(/-/g, '+').replace(/_/g, '/');
+//      switch (output.length % 4) {
+//        case 0: { break; }
+//        case 2: { output += '=='; break; }
+//        case 3: { output += '='; break; }
+//        default: {
+//          throw 'Illegal base64url string!';
+//        }
+//      }
+//      return decodeURIComponent(encodeURIComponent(this.$window.atob(output)));
+//     }
 
+    public parseJwt (token) {
+           var base64Url = token.split('.')[1];
+           var base64 = base64Url.replace('-', '+').replace('_', '/');
+           return JSON.parse(window.atob(base64));
+       };
     public editUser(newInfo){
       console.log(newInfo)
       return this.EditResource.save(newInfo).$promise
@@ -106,6 +122,7 @@ namespace app.Services {
       this.LoginResource = $resource('/api/users/login')
       this.UserResource = $resource('/api/users/userProfile')
       this.ProfileResource = $resource('/api/users/profile')
+      this.FollowResource = $resource('/api/users/follow')
       this.UserFeedResource = $resource('/api/users/userFeed')
       this.EditResource = $resource('/api/users/editProfile')
     }
