@@ -34,11 +34,8 @@ namespace app.Services {
     private UserFeedResource;
     private EditResource;
     private ProfileResource;
-<<<<<<< 5130dfb272d996a25d03f9164b2f7f6279a8df16
     private FollowResource;
-=======
     private LikeResource;
->>>>>>> Implements client side logic for likes
 
     public status = {
       _id: null,
@@ -57,18 +54,21 @@ namespace app.Services {
 
     public login(user){
       return this.LoginResource.save(user).$promise.then((res) =>
-      {this.setToken(res['token']);
-      //  this.setUser()
-        console.log(`This is service: ${user}`)
+      {  console.log("Res token from login: ", res['token'])
+
+        this.setToken(res['token']);
+       this.setUser()
+       console.log(this.status)
       });
     }
 
-    // public setUser(){
-    //   let u = JSON.parse(this.urlBase64Decode(this.getToken().split('.')[1]));
-    //   this.status._id = u._id;
-    //   this.status.email = u.email;
-    //   this.status.role = u.role;
-    // };
+    public setUser(){
+      let u = JSON.parse(this.urlBase64Decode(this.getToken().split('.')[1]));
+      console.log("set user is called ", u)
+      this.status._id = u._id;
+      this.status.email = u.email;
+      this.status.role = u.role;
+    };
 
     public getUser(){
       return this.UserResource.query()
@@ -100,19 +100,19 @@ namespace app.Services {
       this.$window.localStorage.setItem('token', token)
     }
 
-//     public urlBase64Decode(str) {
-//       console.log(`${str}`)
-//       let output = str.replace(/-/g, '+').replace(/_/g, '/');
-//      switch (output.length % 4) {
-//        case 0: { break; }
-//        case 2: { output += '=='; break; }
-//        case 3: { output += '='; break; }
-//        default: {
-//          throw 'Illegal base64url string!';
-//        }
-//      }
-//      return decodeURIComponent(encodeURIComponent(this.$window.atob(output)));
-//     }
+    public urlBase64Decode(str) {
+      console.log(`This is in the decode function ${str}`)
+      let output = str.replace(/-/g, '+').replace(/_/g, '/');
+     switch (output.length % 4) {
+       case 0: { break; }
+       case 2: { output += '=='; break; }
+       case 3: { output += '='; break; }
+       default: {
+         throw 'Illegal base64url string!';
+       }
+     }
+     return decodeURIComponent(encodeURIComponent(this.$window.atob(output)));
+    }
 
     public parseJwt (token) {
            var base64Url = token.split('.')[1];
@@ -135,7 +135,6 @@ namespace app.Services {
       this.UserFeedResource = $resource('/api/users/userFeed')
       this.EditResource = $resource('/api/users/editProfile')
       this.LikeResource = $resource('/api/users/likeProfile')
-
     }
 
   }
