@@ -5,7 +5,7 @@ namespace app.Controllers {
 
     public login(user){
             this.userService.login(this.user).then((res) => {
-            console.log(res);
+            console.log("from login res ", res);
             this.$state.go('UserProfile')
           })
         }
@@ -22,7 +22,7 @@ namespace app.Controllers {
 
     public register(){
           this.userService.register(this.user).then((res) => {
-            console.log(res);
+            console.log("from register res ", res);
             this.$state.go('UserProfile')
           })
         }
@@ -43,7 +43,8 @@ namespace app.Controllers {
     constructor(
       private filepickerService,
       private $scope: ng.IScope,
-      private postService: app.Services.PostService
+      private postService: app.Services.PostService,
+      private $state: ng.ui.IStateService
     ) {}
 
     public pickFile() {
@@ -78,6 +79,7 @@ namespace app.Controllers {
     public logout(){
       console.log('I am logging out')
       this.userService.deleteToken()
+      this.$state.go('Register')
     }
 
 
@@ -93,10 +95,11 @@ namespace app.Controllers {
       this.userProfile = this.userService.getUser()
       console.log(this.userProfile)
       let token = this.userService.getToken()
-      let userInfo = this.userService.parseJwt(token)
-      // var payload = window.atob(window.localStorage['token'].split('.')[1])
+      console.log(token, " token From page load")
+      // let userInfo = this.userService.parseJwt(token)
+      var payload = window.atob(window.localStorage['token'].split('.')[1])
 
-      console.log(`${userInfo}`)
+      console.log(`${payload}`)
     }
   }
 
@@ -162,6 +165,7 @@ namespace app.Controllers {
   export class DiscoverController {
     public pillar;
     public posts;
+    public user;
 
     public discover(pillar){
             this.discoverService.discoverBy(this.pillar).then((res) => {
@@ -170,8 +174,17 @@ namespace app.Controllers {
             this.posts = res;
           })
         }
+    public like () {
+      this.user = "123"
+      console.log("user from LIKE function: ", this.user)
+
+      this.userService.addLike(this.user).then((res) => {
+        console.log("res from LIKE function: ", res)
+      })
+    }
 
     constructor(
+      private userService: app.Services.UserService,
       private discoverService: app.Services.DiscoverService,
       private $state: ng.ui.IStateService
     ) {}
