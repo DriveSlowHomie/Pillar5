@@ -44,6 +44,7 @@ UserSchema.method('generateJWT', function() {
    let today = new Date();
    let exp = new Date(today);
    exp.setDate(today.getDate() + 36500);
+console.log("))))))))))))))))))))))))))))", this._id, this.email)
    return jwt.sign({
      id: this._id,
      email: this.email,

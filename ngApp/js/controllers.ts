@@ -3,9 +3,10 @@ namespace app.Controllers {
   export class HomeController {
     public user;
 
-    public login(user){
+    public login(){
+        console.log(this.user)
             this.userService.login(this.user).then((res) => {
-            console.log("from login res ", res);
+            // console.log("from login res ", res);
             this.$state.go('UserProfile')
           })
         }

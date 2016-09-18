@@ -2,7 +2,7 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 //For FacebookStrategy
-var FacebookStrategy = require('passport-facebook').Strategy;
+// var FacebookStrategy = require('passport-facebook').Strategy;
 var mongoose = require('mongoose');
 var User = mongoose.model('User');
 
@@ -14,16 +14,47 @@ passport.deserializeUser(function(obj, done){
   done(null, obj);
 })
 
-passport.use(new LocalStrategy(function(username, password, done){
-  console.log('Milkshake!!!!!!!!!!!!')
-  User.findOne({username: username}, function(err, user) {
-    if(err) return done(err);
-    if(!user) return done(null, false, {message: "Incorrect username"})
-    if(!user.validatePassword(password)) return done(null, false, {message: "Password does not match"});
-    return done(null, user);
-    {}
-  });
-}))
+// passport.use(new LocalStrategy(
+//   {usernameField: 'email',
+//   passwordField: 'password'},
+//   function(email, password, done){
+//   console.log('Milkshake!!!!!!!!!!!! email, password', email, password)
+//   User.findOne({email: email}, function(err, user) {
+//     if(err) return done(err);
+//     if(!user) return done(null, false, {message: "Incorrect username"})
+//     if(!user.validatePassword(password)) return done(null, false, {message: "Password does not match"});
+//     return done(null, user);
+//   });
+// }))
+
+
+
+// passport.use(new LocalStrategy(
+//   function(username, password, done) {
+//     User.findOne({ email: username }, function (err, user) {
+//       if (err) { return done(err); }
+//       if (!user) {
+//         return done(null, false, { message: 'Incorrect username.' });
+//       }
+//       if (!user.validPassword(password)) {
+//         return done(null, false, { message: 'Incorrect password.' });
+//       }
+//       return done(null, user);
+//     });
+//   }
+// ));
+
+
+passport.use(new LocalStrategy(function(username, password, done) {
+    console.log('Milkshake!!!!!!!!!!!! email, password', username, password)
+
+    User.findOne({email: username}, function(err, user) {
+      if(err) return done(err);
+      if(!user) return done(null, false, {message: 'Incorrect username.'});
+      if(!user.validatePassword(password)) return done(null, false, {message: 'Password does not match.'});
+      return done(null, user);
+    });
+}));
 
 //For Facebook strategy
 // passport.use(new FacebookStrategy({
