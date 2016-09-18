@@ -68,14 +68,40 @@ router.post('/register', function(req, res, next) {
 });
 
 //Login to Pillar5
-router.post('/login', (req, res, next ) => {
-  if(!req.body.email || !req.body.password) return res.status(400).send("Please fill out every field");
-  passport.authenticate('local', function(err, users, info){
-        let token = user.generateJWT();
-        console.log(token)
-        return res.json({token : token});
-    }(req, res, next));
-})
+// router.post('/login', (req, res, next ) => {
+//   console.log("this is req.body from login*********************", req.body)
+//   if(!req.body.username || !req.body.password) return res.status(400).send("Please fill out every field");
+//   passport.authenticate('local', function(err, users, info){
+//     if (user) {
+//       console.log(user)
+//       let token = user.generateJWT();
+//       // console.log("ERROR++++++++++++++++++++++++++++++++++++++++", err)
+//       // console.log("USERS++++++++++++++++++++++++++++++++++++++++", user)
+//       // console.log("INFO++++++++++++++++++++++++++++++++++++++++", info)
+//
+//       return res.json({token : token});
+//     }
+//     }(req, res, next));
+// })
+
+// router.post('/login', function(req, res, next) {
+//   console.log("this is req.body from login*********************", req.body)
+//   passport.authenticate('local', function(err, users, info) {
+//             let token = user.generateJWT();
+//             console.log(user, token)
+//             return res.json({token : token});
+//   })(req, res, next);
+// });
+
+router.post('/login', function(req, res, next) {
+	if(!req.body.username || !req.body.password) return res.status(400).send("Please fill out every field");
+	passport.authenticate('local', function(err, user, info) {
+		console.log("THIS IS CONSOLELOGGING", user, err);
+		if(err) return next(err);
+		if(user) return res.json({token : user.generateJWT()});
+		res.status(400).send(info);
+	})(req, res, next);
+});
 
 //Get User info
 router.get('/userProfile', function(req, res, next) {

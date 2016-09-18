@@ -53,6 +53,7 @@ namespace app.Services {
     }
 
     public login(user){
+      console.log("USER FROM SERVICE LOGIN", user)
       return this.LoginResource.save(user).$promise.then((res) =>
       {  console.log("Res token from login: ", res['token'])
 

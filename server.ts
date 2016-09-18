@@ -20,6 +20,10 @@ if (process.env.NODE_ENV !== 'test') app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+require("./models/userModel");
+require("./config/passport");
+
 app.use(passport.initialize());
 app.use(passport.session());
 
