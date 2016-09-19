@@ -27,6 +27,7 @@ let user1 = new User(
       }]
   }
 )
+
 let user2 = new User(
   {
     email: '123',
@@ -120,12 +121,35 @@ router.get('/profile', function(req, res, next) {
 });
 
 //Follow
-router.put('/follow', (req, res, next) => {
-  User.find({email: "123"}).then(req.body.user, {$set: {followers: req.body.email}}, (err, res) => {
+router.post('/follow', function(req, res, next) {
+  User.find({email: ""}, (err, user) => {
     if(err) {
-      console.log(err);
-    } else {
-      console.log(res);
+      res.send(err);
+    }
+    if(user) {
+      user.following = req.body.followingEmail
+      user.save((err, user) => {
+        if(err) {
+          res.send("this is the error", err)
+        } else {
+          res.send("Following!");
+        }
+      })
+    }
+  })
+  User.find({email: ""}, (err, user) => {
+    if(err) {
+      res.send(err);
+    }
+    if(user) {
+      user.followers = req.body.followerEmail
+      user.save((err, user) => {
+        if(err) {
+          res.send("this is the error", err)
+        } else {
+          res.send("Following!");
+        }
+      })
     }
   })
 });
