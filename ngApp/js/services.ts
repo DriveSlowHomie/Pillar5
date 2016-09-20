@@ -79,8 +79,10 @@ namespace app.Services {
       return this.ProfileResource.query({user: 'Kanye West'})
     }
 
-    public follow(user){
-      return this.FollowResource.save().$promise
+    public follow(follower, following){
+      console.log({follower:follower, following:following})
+      return this.FollowResource.save({follower:follower, following:following}).$promise
+      // return this.FollowResource.save(follower, following).$promise
     }
 
     public getUserFeed(){
