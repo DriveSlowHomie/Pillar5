@@ -96,7 +96,7 @@ namespace app.Controllers {
       this.userProfile = this.userService.getUser()
       console.log(this.userProfile)
       let token = this.userService.getToken()
-      console.log(token, " token From page load")
+      console.log(token, "token From page load")
       // let userInfo = this.userService.parseJwt(token)
       var payload = window.atob(window.localStorage['token'].split('.')[1])
 
@@ -108,11 +108,13 @@ namespace app.Controllers {
     public profile;
     public user;
 
-    //
-    // public follow(){
-    //   this.userService.follow()
-    //
-    // }
+
+    public follow(){
+      let token = this.userService.getToken()
+      let payload = JSON.parse(window.atob(token.split('.')[1]));
+      console.log(payload.email, this.profile[0].email)
+      this.userService.follow(payload.email, this.profile[0].email)
+    }
 
     constructor(
       private $stateParams: ng.ui.IStateParamsService,
