@@ -52,6 +52,20 @@ let user2 = new User(
 user1.save()
 user2.save()
 
+router.get('/auth/facebook', passport.authenticate('facebook', { scope: [ 'email' ] }));
+
+router.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/#/account' }),
+  function(req, res) {
+		if(req.isAuthenticated()) {
+			var token = {token : req.user.generateJWT()};
+			console.log(token.token);
+			res.redirect('/#/Token/' + token.token);
+		} else {
+			res.send("You are not authenticated.")
+		}
+	});
+
 //Register user into database
 router.post('/register', function(req, res, next) {
     user.name = req.body.name;
