@@ -1,4 +1,4 @@
-userprofile
+<!-- userprofile
 <div class="container">
   <div>this is the user {{vm.userProfile[0].tag}}</div>
 
@@ -13,4 +13,41 @@ userprofile
 </div>
 
 <a href="/editProfile"><button>Edit Profile</button></a>
-<button ng-click='vm.logout()'>Logout</button>
+<button ng-click='vm.logout()'>Logout</button> -->
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 pull-right">
+      <span>Followers: {{vm.userProfile[0].followers.length}}</span>
+      <span>Following: {{vm.userProfile[0].following.length}}</span>
+      <span>Rank: {{vm.userProfile[0].name}}</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-3">
+      <div>{{vm.userProfile[0].tag}}</div>
+      <div>{{vm.userProfile[0].image}}</div>
+      <button ng-click='vm.logout()'>Logout</button>
+      <a href="/editProfile"><button>Edit Profile</button></a>
+    </div>
+    <div class="col-lg-9">
+      <div>Name: {{vm.userProfile[0].name}}</div>
+      <div>Rank: Sample Rank</div>
+      <div>Bio: {{vm.userProfile[0].description}}</div>
+    </div>
+  </div>
+  <!-- user posts -->
+  <div class="row">
+    <div class="col-lg-12">
+      <ul ng-repeat="post in vm.userProfile[0].posts">
+        <li>
+          <div>{{post.pillar}}</div>
+          <img src="{{post.url}}">
+          <div>{{post.description}}</div>
+          <button ng-click = "vm.like()"> Like! </button>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
