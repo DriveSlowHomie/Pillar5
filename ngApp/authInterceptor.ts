@@ -14,7 +14,7 @@
 
 
 namespace app {
-  angular.module('app').factory('AuthInterceptor', function($window, $state) {
+  angular.module('app').factory('AuthInterceptor', function($window) {
     return {
       request: function(config) {
         console.log("AuthInterceptor IS BEING CALLED++++++++++++++++++++++", config)
@@ -22,10 +22,11 @@ namespace app {
         if ($window.localStorage.getItem('token')) {
           console.log("Token from AuthInterceptor ", $window.localStorage.getItem('token'))
           config.headers.Authorization = 'Bearer ' + $window.localStorage.getItem('token');
-        } else {
-          this.$state.go("Home");
-          // this.$state.go('UserProfile')
         }
+        //  else {
+        //   this.$state.go("Home");
+        //   this.$state.go('UserProfile')
+        // }
         return config;
       }
     }
