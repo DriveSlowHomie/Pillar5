@@ -128,10 +128,28 @@ router.post('/follow', function(req, res, next) {
       res.send(err);
     }
     if(user) {
-      let following = user.following
-      following.push(req.body.following)
-      user.following = following
-      user.save((err, user) => {
+      let following = user[0].following;
+      following.push(req.body.following);
+      user[0].following = following;
+      user[0].save((err, user) => {
+        if(err) {
+          res.send("this is the error", err)
+        } else {
+          console.log("YES!")
+          // res.send("Following!");
+        }
+      })
+    }
+  })
+  User.find({email: req.body.following}, (err, user) => {
+    if(err) {
+      res.send(err);
+    }
+    if(user) {
+      let follower = user[0].followers;
+      follower.push(req.body.follower);
+      user[0].followers = follower;
+      user[0].save((err, user) => {
         if(err) {
           res.send("this is the error", err)
         } else {
@@ -140,21 +158,6 @@ router.post('/follow', function(req, res, next) {
       })
     }
   })
-  // User.find({email: req.body.following}, (err, user) => {
-  //   if(err) {
-  //     res.send(err);
-  //   }
-  //   if(user) {
-  //     user.followers = req.body.follower
-  //     user.save((err, user) => {
-  //       if(err) {
-  //         res.send("this is the error", err)
-  //       } else {
-  //         res.send("Following!");
-  //       }
-  //     })
-  //   }
-  // })
 });
 
 router.post('/editProfile', function(req, res, next) {
