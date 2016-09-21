@@ -113,7 +113,7 @@ router.get('/userProfile', function(req, res, next) {
 
 //Get Profile info
 router.get('/profile', function(req, res, next) {
-  let user = req.query.user
+  let user = req.query.name
   console.log(req.query)
   User.find({name: user}).then((user)=>{
     res.json(user);
