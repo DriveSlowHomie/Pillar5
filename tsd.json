@@ -6,19 +6,19 @@
   "bundle": "typings/tsd.d.ts",
   "installed": {
     "mongodb/mongodb.d.ts": {
-      "commit": "aa8bfeaf005cefa122ada8533d8c93f80c58ae5c"
+      "commit": "925d1e66cd142f34dda079611cf23a911f3c458d"
     },
     "mongoose/mongoose.d.ts": {
-      "commit": "aa8bfeaf005cefa122ada8533d8c93f80c58ae5c"
+      "commit": "925d1e66cd142f34dda079611cf23a911f3c458d"
     },
     "node/node.d.ts": {
-      "commit": "aa8bfeaf005cefa122ada8533d8c93f80c58ae5c"
+      "commit": "925d1e66cd142f34dda079611cf23a911f3c458d"
     },
     "body-parser/body-parser.d.ts": {
-      "commit": "aa8bfeaf005cefa122ada8533d8c93f80c58ae5c"
+      "commit": "925d1e66cd142f34dda079611cf23a911f3c458d"
     },
     "mime/mime.d.ts": {
-      "commit": "aa8bfeaf005cefa122ada8533d8c93f80c58ae5c"
+      "commit": "925d1e66cd142f34dda079611cf23a911f3c458d"
     },
     "express-jwt/express-jwt.d.ts": {
       "commit": "aa8bfeaf005cefa122ada8533d8c93f80c58ae5c"
@@ -27,22 +27,28 @@
       "commit": "aa8bfeaf005cefa122ada8533d8c93f80c58ae5c"
     },
     "express/express.d.ts": {
-      "commit": "aa8bfeaf005cefa122ada8533d8c93f80c58ae5c"
+      "commit": "925d1e66cd142f34dda079611cf23a911f3c458d"
     },
     "passport-local/passport-local.d.ts": {
       "commit": "aa8bfeaf005cefa122ada8533d8c93f80c58ae5c"
     },
     "jsonwebtoken/jsonwebtoken.d.ts": {
-      "commit": "aa8bfeaf005cefa122ada8533d8c93f80c58ae5c"
+      "commit": "925d1e66cd142f34dda079611cf23a911f3c458d"
     },
     "passport/passport.d.ts": {
-      "commit": "aa8bfeaf005cefa122ada8533d8c93f80c58ae5c"
+      "commit": "925d1e66cd142f34dda079611cf23a911f3c458d"
     },
     "express-serve-static-core/express-serve-static-core.d.ts": {
-      "commit": "aa8bfeaf005cefa122ada8533d8c93f80c58ae5c"
+      "commit": "925d1e66cd142f34dda079611cf23a911f3c458d"
     },
     "serve-static/serve-static.d.ts": {
-      "commit": "aa8bfeaf005cefa122ada8533d8c93f80c58ae5c"
+      "commit": "925d1e66cd142f34dda079611cf23a911f3c458d"
+    },
+    "passport-facebook/passport-facebook.d.ts": {
+      "commit": "925d1e66cd142f34dda079611cf23a911f3c458d"
+    },
+    "ejs/ejs.d.ts": {
+      "commit": "925d1e66cd142f34dda079611cf23a911f3c458d"
     }
   }
 }

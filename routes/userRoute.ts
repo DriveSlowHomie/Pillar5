@@ -52,20 +52,6 @@ let user2 = new User(
 user1.save()
 user2.save()
 
-router.get('/auth/facebook', passport.authenticate('facebook', { scope: [ 'email' ] }));
-
-router.get('/auth/facebook/callback',
-  passport.authenticate('facebook', { failureRedirect: '/#/account' }),
-  function(req, res) {
-		if(req.isAuthenticated()) {
-			var token = {token : req.user.generateJWT()};
-			console.log(token.token);
-			res.redirect('/#/Token/' + token.token);
-		} else {
-			res.send("You are not authenticated.")
-		}
-	});
-
 //Register user into database
 router.post('/register', function(req, res, next) {
     user.name = req.body.name;
@@ -202,7 +188,20 @@ router.get('/userFeed', function(req, res, next) {
   })
 });
 
+router.get('/facebook', passport.authenticate('facebook', { scope: [ 'email' ] }, function() {console.log("Facebookendpoint")}));
 
+router.get('/facebook/callback',
+  passport.authenticate('facebook', { failureRedirect: '/#/account' }),
+  function(req, res) {
+    console.log("THIS FACEBOOK CALLBACK ROUTE IS BEING HIT")
+		if(req.isAuthenticated()) {
+			var token = {token : req.user.generateJWT()};
+			console.log(token.token);
+			res.redirect('/#/Token/' + token.token);
+		} else {
+			res.send("You are not authenticated.")
+		}
+	});
 //Login to pillar5
 // router.post('/login', (req, res, next ) => {
 //   if(!req.body.email || !req.body.password)

@@ -3,6 +3,11 @@ namespace app.Controllers {
   export class HomeController {
     public user;
 
+    public facebook(){
+      console.log("CONTROLLER FACEBOOK YES")
+      this.userService.facebook();
+    }
+
     public login(){
         console.log(this.user)
             this.userService.login(this.user).then((res) => {
