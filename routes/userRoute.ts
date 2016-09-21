@@ -193,7 +193,7 @@ router.get('/facebook', passport.authenticate('facebook', { scope: [ 'email' ] }
 router.get('/facebook/callback',
   passport.authenticate('facebook', { failureRedirect: '/#/account' }),
   function(req, res) {
-    console.log("THIS FACEBOOK CALLBACK ROUTE IS BEING HIT")
+    console.log("THIS FACEBOOK CALLBACK ROUTE IS BEING HIT ", req)
 		if(req.isAuthenticated()) {
 			var token = {token : req.user.generateJWT()};
 			console.log(token.token);

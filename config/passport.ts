@@ -61,8 +61,8 @@ passport.use(new FacebookStrategy({
  clientID: "661045760739309",
  clientSecret: "6b076de93a35233ce75b9838fb5a5eb8",
  callbackURL: "http://localhost:3000/api/users/facebook/callback",
-//  passReqToCallback: true,
-//  profileFields: ['id', 'name', "emails"]
+ passReqToCallback: true,
+ profileFields: ['id', 'name', "emails"]
  },
  function(req, accessToken, refreshToken, profile, done){
    console.log("THIS IS FROM FACEBOOK STATEGY");
@@ -78,7 +78,7 @@ passport.use(new FacebookStrategy({
        } else {
          user.email = profile.username + "@facebook.com";
        }
-       user.username = profile.name.givenName.toLowerCase() + profile.name.familyName.toLowerCase();
+       user.tag = profile.name.givenName.toLowerCase() + profile.name.familyName.toLowerCase();
        user.save(function(err, user) {
          if(err) return err;
          console.log("Saved");
