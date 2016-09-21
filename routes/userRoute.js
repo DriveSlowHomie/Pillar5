@@ -78,7 +78,7 @@ router.get('/userProfile', function (req, res, next) {
     });
 });
 router.get('/profile', function (req, res, next) {
-    var user = req.query.user;
+    var user = req.query.name;
     console.log(req.query);
     User.find({ name: user }).then(function (user) {
         res.json(user);

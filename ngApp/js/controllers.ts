@@ -126,8 +126,8 @@ namespace app.Controllers {
       private userService: app.Services.UserService,
       private $state: ng.ui.IStateService
     ) {
-      console.log(`${this.$stateParams}`)
-      this.user = this.$stateParams['profile'];
+      console.log(`${this.$stateParams['user']}`)
+      this.user = this.$stateParams['user'];
       this.profile = this.userService.getProfile(this.user)
       console.log(`Stateparams ${this.profile}`)
     }
