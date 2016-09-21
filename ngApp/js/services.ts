@@ -81,8 +81,8 @@ namespace app.Services {
       return this.UserResource.query()
     }
 
-    public getProfile(profile){
-      return this.ProfileResource.query({name: profile})
+    public getProfile(user){
+      return this.ProfileResource.query({name: user})
     }
 
     public follow(follower, following){
