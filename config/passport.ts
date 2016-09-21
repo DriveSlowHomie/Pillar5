@@ -60,11 +60,12 @@ passport.use(new LocalStrategy(function(username, password, done) {
 passport.use(new FacebookStrategy({
  clientID: "1472316759758075",
  clientSecret: "6f4add569ecca11597ad7b37a3120308",
- callbackURL: "http://localhost:3000/v1/api/auth/facebook/callback",
- passReqToCallback: true,
- profileFields: ['id', 'name', "emails"]
+ callbackURL: "http://localhost:3000/api/users/facebook/callback",
+//  passReqToCallback: true,
+//  profileFields: ['id', 'name', "emails"]
  },
  function(req, accessToken, refreshToken, profile, done){
+   console.log("THIS IS FROM FACEBOOK STATEGY");
    console.log(profile.emails);
    User.findOne({ facebookId: profile.id }, function (err, user) {
      if(err) return done(err, null);

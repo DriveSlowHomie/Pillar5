@@ -36,11 +36,17 @@ namespace app.Services {
     private ProfileResource;
     private FollowResource;
     private LikeResource;
+    private FacebookResource
 
     public status = {
       _id: null,
       email: null,
       role: null
+    }
+
+    public facebook(){
+      console.log("SERVICE FACEBOOK YES")
+      this.FacebookResource.query();
     }
 
     public addLike(user){
@@ -138,6 +144,7 @@ namespace app.Services {
       this.UserFeedResource = $resource('/api/users/userFeed')
       this.EditResource = $resource('/api/users/editProfile')
       this.LikeResource = $resource('/api/users/likeProfile')
+      this.FacebookResource = $resource('/api/users/facebook')
     }
 
   }

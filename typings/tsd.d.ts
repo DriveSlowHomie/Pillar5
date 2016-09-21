@@ -11,3 +11,5 @@
 /// <reference path="passport-local/passport-local.d.ts" />
 /// <reference path="passport/passport.d.ts" />
 /// <reference path="serve-static/serve-static.d.ts" />
+/// <reference path="ejs/ejs.d.ts" />
+/// <reference path="passport-facebook/passport-facebook.d.ts" />

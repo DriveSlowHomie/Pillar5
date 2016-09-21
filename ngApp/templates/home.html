@@ -17,9 +17,11 @@
             <input ng-model="vm.user.password">
           </div>
           <button>Submit</button>
-            <a href="/api/users/facebook" style="float:left;">Facebook Login</a>
         </form>
-      <div ng-bind-html="facebook_page"></div>
+      <!-- <div ng-bind-html="facebook_page"></div> -->
+      <a href="/api/users/facebook" class="btn btn-primary">Facebook</a>
+
+      <button ng-click="vm.facebook()">Submit FACEBOOK ALT</button>
 
      </div>
 
