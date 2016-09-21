@@ -165,8 +165,12 @@ namespace app.Controllers {
       private userService: app.Services.UserService,
       private $state: ng.ui.IStateService
     ) {
-      this.userFeeds = this.userService.getUserFeed()
-      console.log("netgear sucks")}
+      let token = this.userService.getToken()
+      let payload = JSON.parse(window.atob(token.split('.')[1]));
+      this.userFeeds = this.userService.getUserFeed(payload.email)
+      console.log(`${payload.email}`)
+      console.log(`${this.userFeeds}`)
+    }
   }
 
 

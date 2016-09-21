@@ -91,9 +91,9 @@ namespace app.Services {
       // return this.FollowResource.save(follower, following).$promise
     }
 
-    public getUserFeed(){
-      return this.UserFeedResource.query(),
-      console.log("Hey look at me");
+    public getUserFeed(email){
+      console.log({email: email})
+      return this.UserFeedResource.query({email: email})
     }
 
     public getToken () {

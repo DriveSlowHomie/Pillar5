@@ -181,10 +181,24 @@ router.post('/editProfile', function(req, res, next) {
   })
 });
 
+// router.get('/userFeed', function(req, res, next) {
+//   User.find({email: req.query.email}, (err, user) => {
+//     if(err) {
+//       res.send(err);
+//     }
+//     if(user) {
+//       console.log({email: req.query.email})
+//       console.log(user[0].following)
+//       res.send(user[0].following);
+//     }
+//   })
+// });
+
 router.get('/userFeed', function(req, res, next) {
-  User.find({email: "123"}).then((user)=>{
-    console.log(`Im following no one`)
-    res.send(user.following);
+  User.find({email: req.query.email}).then((user)=>{
+    console.log({email: req.query.email})
+    console.log(user[0].following)
+    res.send(user[0].following);
   })
 });
 
